@@ -25,7 +25,7 @@ const static int PIN_595_DATA = 4;
 void emit(unsigned char v)
 {
 	digitalWrite(PIN_595_LATCH, LOW);
-	shiftOut(PIN_595_DATA, PIN_595_CLOCK, LSBFIRST, ~v);
+	shiftOut(PIN_595_DATA, PIN_595_CLOCK, LSBFIRST, v);
 	digitalWrite(PIN_595_LATCH, HIGH);
 }
 
