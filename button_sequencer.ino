@@ -1,4 +1,7 @@
 #include "button.h"
+#include "MsTimer2.h"
+
+#undef DEBUG
 
 static const int SERIAL_BAUD_RATE = 9600;
 
@@ -32,17 +35,49 @@ void emit(unsigned char v)
 // buttons and rotary encoder
 const static int PIN_TRIGGER_BUTTON = 7; // attachInterrupt
 const static int PIN_FUNC_BUTTON = 8; // pin-change-interrupt
+const static int PIN_FUNC2_BUTTON = 14; // pin-change-interrupt
 const static int PIN_ROTARY_1 = 9; // pin-change-interrupt
 const static int PIN_ROTARY_2 = 10; // pin-change-interrupt
 
 const static int PIN_SEQ_START = 3;
 
+const static size_t TIMER_UNIT = 25; // ms
 
-static const size_t SEQ_MAX = 16;
+static const size_t SEQ_MAX = 64;
 static const size_t SLOT_MAX = 4;
 bool sequence[SLOT_MAX][SEQ_MAX];
+bool rtg[SLOT_MAX][SEQ_MAX];
+
+static const size_t CONFIG_MAX = 3;
+int config[SLOT_MAX] = {
+	0			// sequence length 0..16, 1..32, 2..64
+	, 0		// ratchetting (retriggering) speed 0..1, 1..2, 2..3 x TIMER_UNIT ms
+	, 0		// reserve
+	, 0		// reserve
+};
+
+// TODO: micro timing delay 
+
+size_t get_sequence_length()
+{
+	const auto &v = config[0];
+	if (v == 0) return 16;
+	else if (v == 1) return 32;
+	else if (v == 2) return SEQ_MAX;
+}
+
+size_t get_ratchetting_interval()
+{
+	const auto &v = config[1];
+	if (v == 0) return 0;
+	else if (v == 1) return 2;
+	else if (v == 2) return 4;
+}
+
 
 int cnt_seq;
+
+volatile bool config_mode = false;
 
 class OutputManager
 {
@@ -78,6 +113,49 @@ public:
 		emit(prev_data);
 	}
 
+	void blink(bool b)
+	{
+		auto new_data = prev_data & 0xf;
+
+		// overlay rtgpegio on "prev_data"
+		for (size_t i = 0; i < SLOT_MAX; ++i) {
+			if (rtg[i][cnt_seq]) {
+				if (!b) new_data |= ((1 << i) & 0xf);
+				else new_data &= ~((1 << i) & 0xf);
+			}
+		}
+		prev_data = new_data;
+
+		if (!config_mode) {
+			// reset indicators when exited config mode
+			update_current_slot(current_slot);
+			//digitalWrite(PIN_SEQ_START, HIGH);
+			return;
+		}
+
+		// show config value in "cycle" LED.
+		switch (config[current_slot]) {
+			case 0 :
+				digitalWrite(PIN_SEQ_START, HIGH);
+				break;
+			case 1 :
+				if (b) digitalWrite(PIN_SEQ_START, HIGH);
+				else digitalWrite(PIN_SEQ_START, LOW);
+				break;
+			case 2 :
+				digitalWrite(PIN_SEQ_START, LOW);
+				break;
+		}
+
+		// slot selector blinking
+		if (!b) {
+			new_data |= ((1 << current_slot) & 0xf) << 4;
+		} 
+
+		emit(new_data);
+		prev_data = new_data;
+	}
+
 private:
 	size_t current_slot = 0;
 
@@ -102,13 +180,36 @@ private:
 		const auto current_slot = om.get_current_slot();
 		if (state == 1) {
 			if ( digitalRead(PIN_FUNC_BUTTON) == LOW) {
+#ifdef DEBUG
 				serial_log("Button_trigger::onButton: clear");
-				for (int i = 0; i < SEQ_MAX; ++i) sequence[current_slot][i] = false;
+#endif // DEBUG
+				for (int i = 0; i < SEQ_MAX; ++i) {
+					sequence[current_slot][i] = false;
+					rtg[current_slot][i] = false;
+				}
+
+			} else if ( digitalRead(PIN_FUNC2_BUTTON) == LOW ) {
+#ifdef DEBUG
+				serial_log("Button_trigger::onButton: rtgeggio");
+#endif // DEBUG
+				if (!config_mode) rtg[current_slot][cnt_seq] = true;
+
 			} else {
-				sequence[current_slot][cnt_seq] = true;
+				if (config_mode) {
+					auto c = config[current_slot];
+					c += 1;
+					if (c >= CONFIG_MAX) c = 0;
+					config[current_slot] = c;
+#ifdef DEBUG
+					serial_log("Button_trigger::onButton: config: %d: %d", current_slot, c);
+#endif // DEBUG
+				} else {
+					// normal mode
+					sequence[current_slot][cnt_seq] = true;
+				}
+
 			}
 
-			//serial_log("Button_trigger::onButton:");
 		}
 	}
 };
@@ -125,15 +226,34 @@ private:
 	{
 		const auto current_slot = om.get_current_slot();
 		if (state == 1) {
-			for (int i = 0; i < SEQ_MAX/2; ++i) {
-				sequence[current_slot][i+SEQ_MAX/2]
-					 = sequence[current_slot][i];
+			if ( digitalRead(PIN_FUNC2_BUTTON) == LOW ) {
+				config_mode = !config_mode;
+				if (config_mode) {
+#ifdef DEBUG
+					serial_log("Button_func::onButton: config mode");
+#endif // DEBUG
+				} else {
+#ifdef DEBUG
+					serial_log("Button_func::onButton: normal mode");
+#endif // DEBUG
+				}
+
+			} else {
+#ifdef DEBUG
+				serial_log("Button_func::onButton: copy");
+#endif // DEBUG
+				for (int i = 0; i < get_sequence_length()/2; ++i) {
+					sequence[current_slot][i+get_sequence_length()/2]
+					 	= sequence[current_slot][i];
+					rtg[current_slot][i+get_sequence_length()/2]
+					 	= rtg[current_slot][i];
+				}
 			}
-			//serial_log("Button_func::onButton: copy");
 		}
 
 	}
 };
+
 
 class RE_cmd : public RotarySwitch
 {
@@ -154,7 +274,6 @@ private:
 		}
 
 		om.update_current_slot(slot);
-		//serial_log("RE_cmd::onRotarySW: %d %d", dir, slot);
 	}
 };
 
@@ -163,17 +282,22 @@ void onClock()
 {
 	if (digitalRead(PIN_EXT_CLOCK) == HIGH) {
 		// rising edge
-		if (cnt_seq == 0) digitalWrite(PIN_SEQ_START, LOW);
+		if (!config_mode && cnt_seq == 0) {
+#ifdef DEBUG
+			serial_log("cycle");
+#endif // DEBUG
+			digitalWrite(PIN_SEQ_START, LOW);
+		}
 
 		om.out_sequence(cnt_seq, sequence);
 
 	} else {
 		// falling edge
-		if (cnt_seq == 0) digitalWrite(PIN_SEQ_START, HIGH);
+		if (!config_mode && cnt_seq == 0) digitalWrite(PIN_SEQ_START, HIGH);
 
 		// quantize between previous falling edge and next falling edge
 		cnt_seq += 1;
-		if (cnt_seq >= SEQ_MAX) cnt_seq = 0;
+		if (cnt_seq >= get_sequence_length()) cnt_seq = 0;
 
 		om.clear_sequence();
 	}
@@ -193,7 +317,7 @@ ISR(PCINT0_vect)
 	button_f.callback();
 }
 
-void print_seq(bool (*sequence)[16], size_t cnt_seq)
+void print_seq(bool (*sequence)[SEQ_MAX], size_t cnt_seq)
 {
 	serial_log("[%d %d %d %d]"
 		, sequence[0][cnt_seq] 
@@ -201,6 +325,20 @@ void print_seq(bool (*sequence)[16], size_t cnt_seq)
 		, sequence[2][cnt_seq] 
 		, sequence[3][cnt_seq] 
 	);
+}
+
+void onTimer()
+{
+	static bool blink = true;
+	static size_t rtg_cnt = 0;
+
+	rtg_cnt += 1;
+	if (rtg_cnt >= get_ratchetting_interval()) rtg_cnt = 0;
+
+	if (rtg_cnt == 0) {
+		blink = !blink;
+		om.blink(blink);
+	}
 }
 
 void setup() {
@@ -220,6 +358,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(PIN_TRIGGER_BUTTON), onTriggerChanged, CHANGE);
 
   pinMode(PIN_FUNC_BUTTON, INPUT_PULLUP);
+  pinMode(PIN_FUNC2_BUTTON, INPUT_PULLUP);
 
   pinMode(PIN_ROTARY_1, INPUT);
   pinMode(PIN_ROTARY_2, INPUT);
@@ -229,7 +368,7 @@ void setup() {
 	// pin-change-interrupt
 	PCICR = 0;
 	PCMSK0 = 
-		1 << 4 // 8 = PIN_FUNC_BUTTON
+		  1 << 4 // 8 = PIN_FUNC_BUTTON
 		| 1 << 5 // 9 = PIN_ROTARY_1
 	;
 	PCICR = 
@@ -243,33 +382,11 @@ void setup() {
 			sequence[i][j] = false;
 
 	om.update_current_slot(0);
+
+	MsTimer2::set(TIMER_UNIT, onTimer);
+	MsTimer2::start();
 }
 
 
 void loop() {
-
-/*
-	unsigned char v = 1;
-	while(true) {
-		emit(v);
-		v <<= 1;
-		if (v == 0) v = 1;
-		serial_log("v= %d", v);
-		delay(1000);
-	}
-*/
-/*
-		if (cnt_seq == 0) digitalWrite(PIN_SEQ_START, LOW);
-		om.out_sequence(cnt_seq, sequence);
-		print_seq(sequence, cnt_seq);
-
-	delay(200);
-
-		if (cnt_seq == 0) digitalWrite(PIN_SEQ_START, HIGH);
-		cnt_seq += 1;
-		if (cnt_seq >= SEQ_MAX) cnt_seq = 0;
-		om.clear_sequence();
-
-	delay(200);
-// */
 }
