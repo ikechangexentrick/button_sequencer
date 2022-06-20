@@ -117,7 +117,7 @@ public:
 	{
 		auto new_data = prev_data & 0xf;
 
-		// overlay rtgpegio on "prev_data"
+		// overlay retrigger on "prev_data"
 		for (size_t i = 0; i < SLOT_MAX; ++i) {
 			if (rtg[i][cnt_seq]) {
 				if (!b) new_data |= ((1 << i) & 0xf);
@@ -167,6 +167,8 @@ OutputManager om;
 
 bool btn_clr;
 
+void onClock();
+
 class Button_trigger : public Button
 {
 public:
@@ -190,9 +192,15 @@ private:
 
 			} else if ( digitalRead(PIN_FUNC2_BUTTON) == LOW ) {
 #ifdef DEBUG
-				serial_log("Button_trigger::onButton: rtgeggio");
+				serial_log("Button_trigger::onButton: retrigger");
 #endif // DEBUG
-				if (!config_mode) rtg[current_slot][cnt_seq] = true;
+				if (!config_mode) {
+					rtg[current_slot][cnt_seq] = true;
+
+					if (digitalRead(PIN_EXT_CLOCK) == HIGH) {
+						om.out_sequence(cnt_seq, sequence);
+					}
+				}
 
 			} else {
 				if (config_mode) {
@@ -206,6 +214,11 @@ private:
 				} else {
 					// normal mode
 					sequence[current_slot][cnt_seq] = true;
+
+					if (digitalRead(PIN_EXT_CLOCK) == HIGH) {
+						om.out_sequence(cnt_seq, sequence);
+					}
+
 				}
 
 			}
