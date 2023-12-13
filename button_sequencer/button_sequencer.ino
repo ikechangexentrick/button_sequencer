@@ -1,6 +1,8 @@
 #include "button.h"
 #include "MsTimer2.h"
 
+#include "button_sequencer.h" // for enum EnterMode
+
 #undef DEBUG
 
 static const int SERIAL_BAUD_RATE = 9600;
@@ -52,7 +54,7 @@ static const size_t CONFIG_MAX = 3;
 int config[SLOT_MAX] = {
 	0			// sequence length 0..16, 1..32, 2..64
 	, 0		// ratchetting (retriggering) speed 0..1, 1..2, 2..3 x TIMER_UNIT ms
-	, 0		// reserve
+	, 0		// enter button mode 0..recording, 1..on-and-off, 2..on-and-play
 	, 0		// reserve
 };
 
@@ -72,6 +74,14 @@ size_t get_ratchetting_interval()
 	if (v == 0) return 0;
 	else if (v == 1) return 2;
 	else if (v == 2) return 4;
+}
+
+enum EnterMode get_enter_button_mode()
+{
+	const auto &v = config[2];
+	if (v == 0) return RECORDING;
+	else if (v == 1) return ON_AND_OFF;
+	else if (v == 2) return ON_AND_PLAY;
 }
 
 
@@ -96,6 +106,21 @@ public:
 	size_t get_current_slot() const
 	{ return current_slot; }
 
+	void set_override(enum EnterMode mode_) {
+		mode = mode_;
+#ifdef DEBUG
+		serial_log("OutputManager::set_override: %d", mode);
+#endif // DEBUG
+	}
+
+	void override_press() {
+		override_state = true;
+	}
+
+	void override_release() {
+		override_state = false;
+	}
+
 	void out_sequence(size_t cnt_seq, bool (*arr)[SEQ_MAX])
 	{
 		unsigned char new_value = 0xf0;
@@ -104,12 +129,40 @@ public:
 
 		prev_data |= 0x0f;
 		prev_data &= new_value;
+
+		if (mode == ON_AND_OFF) {
+			if (override_state) {
+				prev_data |= (1 << get_current_slot());
+			} else {
+				prev_data &= ~(1 << get_current_slot());
+			}
+		}
+		else if (mode == ON_AND_PLAY) {
+			if (override_state) {
+				prev_data |= (1 << get_current_slot());
+			}
+		}
+
 		emit(prev_data);
 	}
 
 	void clear_sequence()
 	{
 		prev_data &= 0xf0;
+
+		if (mode == ON_AND_OFF) {
+			if (override_state) {
+				prev_data |= (1 << get_current_slot());
+			} else {
+				prev_data &= ~(1 << get_current_slot());
+			}
+		}
+		else if (mode == ON_AND_PLAY) {
+			if (override_state) {
+				prev_data |= (1 << get_current_slot());
+			}
+		}
+
 		emit(prev_data);
 	}
 
@@ -159,6 +212,9 @@ public:
 private:
 	size_t current_slot = 0;
 
+	enum EnterMode mode = RECORDING;
+	bool override_state = false;
+
 	// MSB [slot3 slot2 slot1 slot0][seq3 seq2 seq1 seq0] LSB
 	unsigned char prev_data = 0;
 };
@@ -180,7 +236,8 @@ private:
 	virtual void onButton(int state) override
 	{
 		const auto current_slot = om.get_current_slot();
-		if (state == 1) {
+		const auto mode = get_enter_button_mode();
+		if (state == 0) {
 			if ( digitalRead(PIN_FUNC_BUTTON) == LOW) {
 #ifdef DEBUG
 				serial_log("Button_trigger::onButton: clear");
@@ -211,12 +268,18 @@ private:
 					serial_log("Button_trigger::onButton: config: %d: %d", current_slot, c);
 #endif // DEBUG
 
-			} else if (false) {
-				// immediate mode
+					om.set_override(get_enter_button_mode());
 
 			} else {
-				// recording mode
-				sequence[current_slot][cnt_seq] = true;
+				if (mode == RECORDING) {
+					// recording mode
+					sequence[current_slot][cnt_seq] = true;
+				} else {
+#ifdef DEBUG
+					serial_log("Button_trigger::onButton: on-and-* mode: press");
+#endif // DEBUG
+					om.override_press();
+				}
 
 				if (digitalRead(PIN_EXT_CLOCK) == HIGH) {
 					om.out_sequence(cnt_seq, sequence);
@@ -225,8 +288,11 @@ private:
 
 		} else {
 			// release
-			if (false) {
-				// immediate mode
+			if (mode != RECORDING) {
+#ifdef DEBUG
+				serial_log("Button_trigger::onButton: on-and-* mode: release");
+#endif // DEBUG
+				om.override_release();
 			}
 		}
 	}
