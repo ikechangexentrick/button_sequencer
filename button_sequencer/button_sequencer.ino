@@ -202,8 +202,7 @@ private:
 					}
 				}
 
-			} else {
-				if (config_mode) {
+			} else if (config_mode) {
 					auto c = config[current_slot];
 					c += 1;
 					if (c >= CONFIG_MAX) c = 0;
@@ -211,18 +210,24 @@ private:
 #ifdef DEBUG
 					serial_log("Button_trigger::onButton: config: %d: %d", current_slot, c);
 #endif // DEBUG
-				} else {
-					// normal mode
-					sequence[current_slot][cnt_seq] = true;
 
-					if (digitalRead(PIN_EXT_CLOCK) == HIGH) {
-						om.out_sequence(cnt_seq, sequence);
-					}
+			} else if (false) {
+				// immediate mode
 
+			} else {
+				// recording mode
+				sequence[current_slot][cnt_seq] = true;
+
+				if (digitalRead(PIN_EXT_CLOCK) == HIGH) {
+					om.out_sequence(cnt_seq, sequence);
 				}
-
 			}
 
+		} else {
+			// release
+			if (false) {
+				// immediate mode
+			}
 		}
 	}
 };
@@ -247,7 +252,7 @@ private:
 #endif // DEBUG
 				} else {
 #ifdef DEBUG
-					serial_log("Button_func::onButton: normal mode");
+					serial_log("Button_func::onButton: recording mode");
 #endif // DEBUG
 				}
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>/Users/nikeda/Documents/kicad/ButtonSequencer/ButtonSequencer.sch</source>
-    <date>2022 April 06, Wednesday 20:41:57</date>
+    <source>/Users/nikeda/Documents/Arduino/button_sequencer/hw/ButtonSequencer.sch</source>
+    <date>2023 March 20, Monday 09:51:48</date>
     <tool>Eeschema (5.1.8-0-10_14)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
-        <title/>
-        <company/>
-        <rev/>
+        <title>Button Sequencer</title>
+        <company>Norio Ikeda</company>
+        <rev>1</rev>
         <date/>
         <source>ButtonSequencer.sch</source>
-        <comment number="1" value=""/>
+        <comment number="1" value="https://github.com/ikechangexentrick/button_sequencer"/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -19,12 +19,12 @@
     </sheet>
     <sheet number="2" name="/Sheet62419879/" tstamps="/6241987A/">
       <title_block>
-        <title/>
-        <company/>
-        <rev/>
+        <title>Button Sequencer</title>
+        <company>Norio Ikeda</company>
+        <rev>1</rev>
         <date/>
         <source>_module_interface.sch</source>
-        <comment number="1" value=""/>
+        <comment number="1" value="https://github.com/ikechangexentrick/button_sequencer"/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -32,12 +32,12 @@
     </sheet>
     <sheet number="3" name="/Sheet62451AD7/" tstamps="/62451AD8/">
       <title_block>
-        <title/>
-        <company/>
-        <rev/>
+        <title>Button Sequencer</title>
+        <company>Norio Ikeda</company>
+        <rev>1</rev>
         <date/>
         <source>_module_core.sch</source>
-        <comment number="1" value=""/>
+        <comment number="1" value="https://github.com/ikechangexentrick/button_sequencer"/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -79,7 +79,7 @@
     </comp>
     <comp ref="C1">
       <value>0.1u</value>
-      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
@@ -95,7 +95,7 @@
     </comp>
     <comp ref="C2">
       <value>0.1u</value>
-      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
@@ -137,7 +137,7 @@
       <value>clock</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6243559D</tstamp>
     </comp>
@@ -161,7 +161,7 @@
       <value>select1</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>62441337</tstamp>
     </comp>
@@ -177,7 +177,7 @@
       <value>select2</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>62441344</tstamp>
     </comp>
@@ -193,7 +193,7 @@
       <value>select3</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>62441351</tstamp>
     </comp>
@@ -209,7 +209,7 @@
       <value>select4</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6244136B</tstamp>
     </comp>
@@ -225,7 +225,7 @@
       <value>select4</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6244137D</tstamp>
     </comp>
@@ -305,7 +305,7 @@
       <value>gate1</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6244D51C</tstamp>
     </comp>
@@ -321,7 +321,7 @@
       <value>gate3</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6244D528</tstamp>
     </comp>
@@ -337,7 +337,7 @@
       <value>gate4</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6244D534</tstamp>
     </comp>
@@ -353,17 +353,25 @@
       <value>gate2</value>
       <footprint>LED_THT:LED_D4.0mm</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="Device" part="LED" description=""/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
       <tstamp>6244D540</tstamp>
     </comp>
     <comp ref="J7">
-      <value>Conn_02x09_Odd_Even</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x09_P2.54mm_Vertical</footprint>
+      <value>bus_L</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Connector_Generic" part="Conn_02x09_Odd_Even" description="Generic connector, double row, 02x09, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="Connector" part="Conn_01x10_Female" description="Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
-      <tstamp>624B7BF2</tstamp>
+      <tstamp>63D0A9AE</tstamp>
+    </comp>
+    <comp ref="J8">
+      <value>bus_R</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Conn_01x10_Female" description="Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/Sheet62419879/" tstamps="/6241987A/"/>
+      <tstamp>63D12DF0</tstamp>
     </comp>
     <comp ref="R19">
       <value>100k</value>
@@ -391,7 +399,7 @@
     </comp>
     <comp ref="Q1">
       <value>2SC1815</value>
-      <footprint>Package_TO_SOT_THT:TO-92_Inline</footprint>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline_Wide</footprint>
       <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/2SC1815.pdf</datasheet>
       <libsource lib="Transistor_BJT" part="2SC1815" description="0.15A Ic, 50V Vce, Low Noise Audio NPN Transistor, TO-92"/>
       <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
@@ -407,7 +415,7 @@
     </comp>
     <comp ref="C7">
       <value>0.1u</value>
-      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
@@ -415,7 +423,7 @@
     </comp>
     <comp ref="C6">
       <value>0.1u</value>
-      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
@@ -532,29 +540,93 @@
       <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
       <tstamp>62498E31</tstamp>
     </comp>
-    <comp ref="C5">
-      <value>0.1u</value>
-      <footprint>Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal</footprint>
-      <datasheet>~</datasheet>
-      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
-      <tstamp>62498E37</tstamp>
-    </comp>
     <comp ref="J6">
       <value>power_bus</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Horizontal</footprint>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical</footprint>
       <datasheet>~</datasheet>
       <libsource lib="Connector_Generic" part="Conn_02x05_Odd_Even" description="Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
       <tstamp>62498E3D</tstamp>
     </comp>
-    <comp ref="J8">
-      <value>Conn_02x09_Odd_Even</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x09_P2.54mm_Vertical</footprint>
+    <comp ref="J10">
+      <value>bus_R</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Connector_Generic" part="Conn_02x09_Odd_Even" description="Generic connector, double row, 02x09, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="Connector" part="Conn_01x10_Male" description="Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
-      <tstamp>624C44F0</tstamp>
+      <tstamp>63D1F1F0</tstamp>
+    </comp>
+    <comp ref="J9">
+      <value>bus_L</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Conn_01x10_Male" description="Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D28A5D</tstamp>
+    </comp>
+    <comp ref="D12">
+      <value>D_Schottky</value>
+      <footprint>Diode_THT:D_DO-15_P2.54mm_Vertical_AnodeUp</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D3A9FF</tstamp>
+    </comp>
+    <comp ref="D13">
+      <value>D_Schottky</value>
+      <footprint>Diode_THT:D_DO-15_P2.54mm_Vertical_AnodeUp</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D3B2A6</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>L78L05_TO92</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline_Wide</footprint>
+      <datasheet>http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf</datasheet>
+      <libsource lib="Regulator_Linear" part="L78L05_TO92" description="Positive 100mA 30V Linear Regulator, Fixed Output 5V, TO-92"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D4A9AF</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>0.1u</value>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D4C5D5</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>0.1u</value>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D4CC81</tstamp>
+    </comp>
+    <comp ref="D11">
+      <value>1N4148</value>
+      <footprint>Diode_THT:D_DO-35_SOD27_P2.54mm_Vertical_AnodeUp</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</datasheet>
+      <libsource lib="Diode" part="1N4148" description="100V 0.15A standard switching diode, DO-35"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63D67155</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>0.1u</value>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>62498E37</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>0.1u</value>
+      <footprint>Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/Sheet62451AD7/" tstamps="/62451AD8/"/>
+      <tstamp>63E4B831</tstamp>
     </comp>
   </components>
   <libparts>
@@ -701,6 +773,52 @@
         <pin num="TN" name="~" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="Connector" part="Conn_01x10_Female">
+      <description>Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x10_Female</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x10_Male">
+      <description>Generic connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x10_Male</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="Connector_Generic" part="Conn_02x05_Odd_Even">
       <description>Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <docs>~</docs>
@@ -722,37 +840,6 @@
         <pin num="8" name="Pin_8" type="passive"/>
         <pin num="9" name="Pin_9" type="passive"/>
         <pin num="10" name="Pin_10" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Connector_Generic" part="Conn_02x09_Odd_Even">
-      <description>Generic connector, double row, 02x09, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>Connector*:*_2x??_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">J</field>
-        <field name="Value">Conn_02x09_Odd_Even</field>
-      </fields>
-      <pins>
-        <pin num="1" name="Pin_1" type="passive"/>
-        <pin num="2" name="Pin_2" type="passive"/>
-        <pin num="3" name="Pin_3" type="passive"/>
-        <pin num="4" name="Pin_4" type="passive"/>
-        <pin num="5" name="Pin_5" type="passive"/>
-        <pin num="6" name="Pin_6" type="passive"/>
-        <pin num="7" name="Pin_7" type="passive"/>
-        <pin num="8" name="Pin_8" type="passive"/>
-        <pin num="9" name="Pin_9" type="passive"/>
-        <pin num="10" name="Pin_10" type="passive"/>
-        <pin num="11" name="Pin_11" type="passive"/>
-        <pin num="12" name="Pin_12" type="passive"/>
-        <pin num="13" name="Pin_13" type="passive"/>
-        <pin num="14" name="Pin_14" type="passive"/>
-        <pin num="15" name="Pin_15" type="passive"/>
-        <pin num="16" name="Pin_16" type="passive"/>
-        <pin num="17" name="Pin_17" type="passive"/>
-        <pin num="18" name="Pin_18" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Device" part="C">
@@ -785,14 +872,25 @@
         <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Device" part="LED">
-      <description>Light emitting diode</description>
+    <libpart lib="Device" part="D_Schottky">
+      <description>Schottky diode</description>
       <docs>~</docs>
       <footprints>
-        <fp>LED*</fp>
-        <fp>LED_SMD:*</fp>
-        <fp>LED_THT:*</fp>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
       </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Schottky</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
       <fields>
         <field name="Reference">D</field>
         <field name="Value">LED</field>
@@ -833,6 +931,84 @@
         <pin num="C" name="C" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="Diode" part="1N4148">
+      <aliases>
+        <alias>1N4448</alias>
+        <alias>1N4149</alias>
+        <alias>1N4151</alias>
+        <alias>1N914</alias>
+        <alias>BA243</alias>
+        <alias>BA244</alias>
+        <alias>BA282</alias>
+        <alias>BA283</alias>
+        <alias>BAV17</alias>
+        <alias>BAV18</alias>
+        <alias>BAV19</alias>
+        <alias>BAV20</alias>
+        <alias>BAV21</alias>
+        <alias>BAW75</alias>
+        <alias>BAW76</alias>
+        <alias>BAY93</alias>
+      </aliases>
+      <description>100V 0.15A standard switching diode, DO-35</description>
+      <docs>https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf</docs>
+      <footprints>
+        <fp>D*DO?35*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">1N4148</field>
+        <field name="Footprint">Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="MC78L05_TO92">
+      <aliases>
+        <alias>LM78L05_TO92</alias>
+        <alias>MC78L06_TO92</alias>
+        <alias>MC78L08_TO92</alias>
+        <alias>MC78L12_TO92</alias>
+        <alias>LM78L12_TO92</alias>
+        <alias>MC78L15_TO92</alias>
+        <alias>MC78L18_TO92</alias>
+        <alias>MC78L24_TO92</alias>
+        <alias>LM2931AZ-5.0_TO92</alias>
+        <alias>LM2936-3.0_TO92</alias>
+        <alias>LM2936-3.3_TO92</alias>
+        <alias>LM2936-5.0_TO92</alias>
+        <alias>LP2950-3.0_TO92</alias>
+        <alias>LP2950-3.3_TO92</alias>
+        <alias>LP2950-5.0_TO92</alias>
+        <alias>L78L33_TO92</alias>
+        <alias>L78L05_TO92</alias>
+        <alias>L78L06_TO92</alias>
+        <alias>L78L08_TO92</alias>
+        <alias>L78L09_TO92</alias>
+        <alias>L78L10_TO92</alias>
+        <alias>L78L12_TO92</alias>
+        <alias>L78L15_TO92</alias>
+        <alias>L78L18_TO92</alias>
+        <alias>L78L24_TO92</alias>
+      </aliases>
+      <description>Positive 100mA 30V Linear Regulator, Fixed Output 5V, TO-92</description>
+      <docs>https://www.onsemi.com/pub/Collateral/MC78L00A-D.PDF</docs>
+      <footprints>
+        <fp>TO?92*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MC78L05_TO92</field>
+        <field name="Footprint">Package_TO_SOT_THT:TO-92_Inline</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VO" type="power_out"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
     <libpart lib="Switch" part="SW_Push">
       <description>Push button switch, generic, two pins</description>
       <docs>~</docs>
@@ -871,7 +1047,7 @@
       <uri>/Library/Application Support/kicad/library/Amplifier_Operational.lib</uri>
     </library>
     <library logical="Arduino_compatible">
-      <uri>/Users/nikeda/Documents/kicad/Arduino_compatible.lib</uri>
+      <uri>/Users/nikeda/Documents/kicad/ikechang_kicad_library/ikechang_symbols/Arduino_compatible.lib</uri>
     </library>
     <library logical="Connector">
       <uri>/Library/Application Support/kicad/library/Connector.lib</uri>
@@ -882,6 +1058,12 @@
     <library logical="Device">
       <uri>/Library/Application Support/kicad/library/Device.lib</uri>
     </library>
+    <library logical="Diode">
+      <uri>/Library/Application Support/kicad/library/Diode.lib</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>/Library/Application Support/kicad/library/Regulator_Linear.lib</uri>
+    </library>
     <library logical="Switch">
       <uri>/Library/Application Support/kicad/library/Switch.lib</uri>
     </library>
@@ -891,170 +1073,182 @@
   </libraries>
   <nets>
     <net code="1" name="/Sheet62419879/clock_in">
-      <node ref="J8" pin="1"/>
+      <node ref="J9" pin="2"/>
       <node ref="J1" pin="T"/>
       <node ref="D1" pin="2"/>
-      <node ref="J7" pin="1"/>
+      <node ref="J7" pin="2"/>
       <node ref="R19" pin="2"/>
     </net>
     <net code="2" name="/Sheet62419879/re_1">
-      <node ref="J8" pin="13"/>
+      <node ref="J8" pin="7"/>
       <node ref="C2" pin="1"/>
-      <node ref="R5" pin="1"/>
       <node ref="U2" pin="12"/>
-      <node ref="J7" pin="13"/>
+      <node ref="R5" pin="1"/>
+      <node ref="J10" pin="7"/>
     </net>
     <net code="3" name="/Sheet62419879/re_2">
-      <node ref="J7" pin="15"/>
-      <node ref="J8" pin="15"/>
+      <node ref="J8" pin="6"/>
       <node ref="C1" pin="1"/>
       <node ref="R4" pin="1"/>
       <node ref="U2" pin="13"/>
+      <node ref="J10" pin="6"/>
     </net>
     <net code="4" name="/Sheet62419879/sw_func_1">
+      <node ref="J10" pin="4"/>
       <node ref="SW4" pin="2"/>
       <node ref="U2" pin="11"/>
-      <node ref="J8" pin="18"/>
-      <node ref="J7" pin="18"/>
+      <node ref="J8" pin="4"/>
     </net>
     <net code="5" name="/Sheet62419879/sw_enter">
-      <node ref="J8" pin="17"/>
-      <node ref="J7" pin="17"/>
+      <node ref="J8" pin="9"/>
       <node ref="U2" pin="10"/>
       <node ref="SW2" pin="2"/>
+      <node ref="J10" pin="9"/>
     </net>
     <net code="6" name="/Sheet62419879/sw_func_2">
-      <node ref="J8" pin="14"/>
-      <node ref="J7" pin="14"/>
-      <node ref="U2" pin="15"/>
+      <node ref="J8" pin="8"/>
+      <node ref="J10" pin="8"/>
       <node ref="SW3" pin="2"/>
+      <node ref="U2" pin="15"/>
     </net>
     <net code="7" name="/Sheet62419879/gate_1">
-      <node ref="D7" pin="2"/>
-      <node ref="J7" pin="3"/>
       <node ref="R27" pin="2"/>
+      <node ref="J9" pin="5"/>
+      <node ref="J7" pin="5"/>
+      <node ref="D7" pin="2"/>
       <node ref="U1" pin="7"/>
       <node ref="R15" pin="2"/>
-      <node ref="J8" pin="3"/>
     </net>
     <net code="8" name="/Sheet62419879/gate_2">
-      <node ref="J8" pin="6"/>
+      <node ref="J9" pin="7"/>
       <node ref="R28" pin="2"/>
-      <node ref="R16" pin="2"/>
+      <node ref="J7" pin="7"/>
       <node ref="U1" pin="8"/>
-      <node ref="J7" pin="6"/>
       <node ref="D8" pin="2"/>
+      <node ref="R16" pin="2"/>
     </net>
     <net code="9" name="/Sheet62419879/gate_3">
+      <node ref="J9" pin="9"/>
       <node ref="R29" pin="2"/>
+      <node ref="U1" pin="14"/>
       <node ref="D9" pin="2"/>
       <node ref="R17" pin="2"/>
       <node ref="J7" pin="9"/>
-      <node ref="U1" pin="14"/>
-      <node ref="J8" pin="9"/>
     </net>
     <net code="10" name="/Sheet62419879/gate_4">
       <node ref="U1" pin="1"/>
       <node ref="R18" pin="2"/>
-      <node ref="J8" pin="11"/>
+      <node ref="J8" pin="3"/>
+      <node ref="J10" pin="3"/>
       <node ref="R30" pin="2"/>
-      <node ref="J7" pin="11"/>
       <node ref="D10" pin="2"/>
     </net>
     <net code="11" name="/Sheet62419879/select_1">
-      <node ref="U3" pin="3"/>
-      <node ref="J8" pin="4"/>
       <node ref="R10" pin="1"/>
-      <node ref="J7" pin="4"/>
+      <node ref="U3" pin="3"/>
+      <node ref="J7" pin="6"/>
+      <node ref="J9" pin="6"/>
     </net>
     <net code="12" name="/Sheet62419879/select_2">
-      <node ref="U3" pin="2"/>
-      <node ref="J7" pin="8"/>
-      <node ref="J8" pin="8"/>
       <node ref="R9" pin="1"/>
+      <node ref="J9" pin="8"/>
+      <node ref="J7" pin="8"/>
+      <node ref="U3" pin="2"/>
     </net>
     <net code="13" name="/Sheet62419879/select_3">
-      <node ref="J8" pin="12"/>
       <node ref="U3" pin="1"/>
-      <node ref="J7" pin="12"/>
       <node ref="R8" pin="1"/>
+      <node ref="J7" pin="10"/>
+      <node ref="J9" pin="10"/>
     </net>
     <net code="14" name="/Sheet62419879/select_4">
-      <node ref="J7" pin="16"/>
-      <node ref="U3" pin="15"/>
       <node ref="R7" pin="1"/>
-      <node ref="J8" pin="16"/>
+      <node ref="U3" pin="15"/>
+      <node ref="J8" pin="2"/>
+      <node ref="J10" pin="2"/>
     </net>
     <net code="15" name="/Sheet62419879/seq_start">
-      <node ref="J7" pin="2"/>
+      <node ref="J7" pin="3"/>
       <node ref="U2" pin="6"/>
+      <node ref="J9" pin="3"/>
       <node ref="R6" pin="1"/>
-      <node ref="J8" pin="2"/>
     </net>
     <net code="16" name="GND">
       <node ref="R12" pin="2"/>
-      <node ref="SW4" pin="1"/>
-      <node ref="SW2" pin="1"/>
+      <node ref="C10" pin="1"/>
       <node ref="R14" pin="2"/>
-      <node ref="J8" pin="7"/>
-      <node ref="J7" pin="10"/>
+      <node ref="C5" pin="2"/>
       <node ref="R13" pin="2"/>
-      <node ref="SW3" pin="1"/>
+      <node ref="J7" pin="4"/>
+      <node ref="SW4" pin="1"/>
       <node ref="R11" pin="2"/>
+      <node ref="SW2" pin="1"/>
+      <node ref="J8" pin="1"/>
+      <node ref="J8" pin="10"/>
+      <node ref="SW3" pin="1"/>
+      <node ref="J5" pin="S"/>
       <node ref="SW1" pin="C"/>
       <node ref="C1" pin="2"/>
-      <node ref="J8" pin="10"/>
       <node ref="C2" pin="2"/>
-      <node ref="J7" pin="7"/>
-      <node ref="J5" pin="S"/>
       <node ref="R20" pin="1"/>
       <node ref="R21" pin="1"/>
+      <node ref="C8" pin="1"/>
+      <node ref="C9" pin="1"/>
+      <node ref="U4" pin="2"/>
+      <node ref="J9" pin="4"/>
+      <node ref="J10" pin="10"/>
+      <node ref="J10" pin="1"/>
       <node ref="J1" pin="S"/>
       <node ref="R3" pin="2"/>
       <node ref="U3" pin="13"/>
+      <node ref="U3" pin="8"/>
+      <node ref="C7" pin="2"/>
+      <node ref="C6" pin="1"/>
       <node ref="J6" pin="8"/>
       <node ref="J6" pin="7"/>
-      <node ref="U3" pin="8"/>
       <node ref="J6" pin="6"/>
       <node ref="J6" pin="5"/>
-      <node ref="C7" pin="2"/>
       <node ref="J6" pin="4"/>
       <node ref="J6" pin="3"/>
       <node ref="C4" pin="1"/>
       <node ref="C3" pin="2"/>
-      <node ref="C6" pin="1"/>
+      <node ref="J4" pin="S"/>
       <node ref="D6" pin="1"/>
       <node ref="R26" pin="1"/>
+      <node ref="J3" pin="S"/>
       <node ref="D5" pin="1"/>
       <node ref="R25" pin="1"/>
-      <node ref="J4" pin="S"/>
       <node ref="D4" pin="1"/>
       <node ref="R23" pin="1"/>
-      <node ref="J3" pin="S"/>
-      <node ref="R24" pin="1"/>
       <node ref="U2" pin="23"/>
       <node ref="U2" pin="3"/>
       <node ref="U2" pin="4"/>
-      <node ref="D3" pin="1"/>
       <node ref="SW5" pin="2"/>
+      <node ref="R24" pin="1"/>
+      <node ref="D3" pin="1"/>
       <node ref="J2" pin="S"/>
     </net>
     <net code="17" name="+5V">
-      <node ref="U3" pin="10"/>
-      <node ref="R22" pin="2"/>
-      <node ref="R1" pin="1"/>
-      <node ref="R2" pin="1"/>
-      <node ref="J7" pin="5"/>
-      <node ref="U2" pin="21"/>
-      <node ref="Q1" pin="2"/>
+      <node ref="J9" pin="1"/>
       <node ref="U3" pin="16"/>
-      <node ref="D2" pin="2"/>
-      <node ref="J8" pin="5"/>
       <node ref="C7" pin="1"/>
+      <node ref="D2" pin="2"/>
+      <node ref="R2" pin="1"/>
+      <node ref="U4" pin="1"/>
+      <node ref="C9" pin="2"/>
+      <node ref="J7" pin="1"/>
+      <node ref="R22" pin="2"/>
+      <node ref="Q1" pin="2"/>
+      <node ref="J8" pin="5"/>
+      <node ref="J10" pin="5"/>
+      <node ref="R1" pin="1"/>
+      <node ref="U3" pin="10"/>
+      <node ref="U2" pin="21"/>
+      <node ref="D11" pin="2"/>
     </net>
     <net code="18" name="Net-(R1-Pad2)">
-      <node ref="SW1" pin="B"/>
       <node ref="R4" pin="2"/>
+      <node ref="SW1" pin="B"/>
       <node ref="R1" pin="2"/>
     </net>
     <net code="19" name="Net-(R2-Pad2)">
@@ -1070,20 +1264,20 @@
       <node ref="R3" pin="1"/>
     </net>
     <net code="22" name="Net-(D6-Pad2)">
-      <node ref="D6" pin="2"/>
       <node ref="R10" pin="2"/>
+      <node ref="D6" pin="2"/>
     </net>
     <net code="23" name="Net-(D5-Pad2)">
-      <node ref="R9" pin="2"/>
       <node ref="D5" pin="2"/>
+      <node ref="R9" pin="2"/>
     </net>
     <net code="24" name="Net-(D4-Pad2)">
-      <node ref="R8" pin="2"/>
       <node ref="D4" pin="2"/>
+      <node ref="R8" pin="2"/>
     </net>
     <net code="25" name="Net-(D3-Pad2)">
-      <node ref="D3" pin="2"/>
       <node ref="R7" pin="2"/>
+      <node ref="D3" pin="2"/>
     </net>
     <net code="26" name="Net-(D2-Pad1)">
       <node ref="R6" pin="2"/>
@@ -1104,8 +1298,8 @@
       <node ref="J3" pin="TN"/>
     </net>
     <net code="31" name="Net-(J4-PadT)">
-      <node ref="R17" pin="1"/>
       <node ref="J4" pin="T"/>
+      <node ref="R17" pin="1"/>
     </net>
     <net code="32" name="Net-(J4-PadTN)">
       <node ref="J4" pin="TN"/>
@@ -1118,8 +1312,8 @@
       <node ref="J5" pin="TN"/>
     </net>
     <net code="35" name="Net-(D7-Pad1)">
-      <node ref="R11" pin="1"/>
       <node ref="D7" pin="1"/>
+      <node ref="R11" pin="1"/>
     </net>
     <net code="36" name="Net-(D9-Pad1)">
       <node ref="D9" pin="1"/>
@@ -1130,22 +1324,22 @@
       <node ref="R14" pin="1"/>
     </net>
     <net code="38" name="Net-(D8-Pad1)">
-      <node ref="R12" pin="1"/>
       <node ref="D8" pin="1"/>
+      <node ref="R12" pin="1"/>
     </net>
     <net code="39" name="Net-(Q1-Pad3)">
-      <node ref="Q1" pin="3"/>
       <node ref="R19" pin="1"/>
       <node ref="R20" pin="2"/>
+      <node ref="Q1" pin="3"/>
     </net>
     <net code="40" name="/Sheet62451AD7/clock">
+      <node ref="U2" pin="5"/>
       <node ref="R21" pin="2"/>
       <node ref="Q1" pin="1"/>
-      <node ref="U2" pin="5"/>
     </net>
     <net code="41" name="/Sheet62451AD7/595_clock">
-      <node ref="U3" pin="11"/>
       <node ref="U2" pin="8"/>
+      <node ref="U3" pin="11"/>
     </net>
     <net code="42" name="/Sheet62451AD7/595_data">
       <node ref="U3" pin="14"/>
@@ -1160,20 +1354,20 @@
       <node ref="U3" pin="5"/>
     </net>
     <net code="45" name="/Sheet62451AD7/gate2">
-      <node ref="U1" pin="10"/>
       <node ref="U3" pin="6"/>
+      <node ref="U1" pin="10"/>
     </net>
     <net code="46" name="/Sheet62451AD7/gate1">
-      <node ref="U1" pin="5"/>
       <node ref="U3" pin="7"/>
+      <node ref="U1" pin="5"/>
     </net>
     <net code="47" name="Net-(U3-Pad9)">
       <node ref="U3" pin="9"/>
     </net>
     <net code="48" name="/Sheet62451AD7/595_latch">
-      <node ref="U2" pin="9"/>
       <node ref="U3" pin="12"/>
       <node ref="C6" pin="2"/>
+      <node ref="U2" pin="9"/>
     </net>
     <net code="49" name="Net-(U2-Pad1)">
       <node ref="U2" pin="1"/>
@@ -1199,22 +1393,17 @@
     <net code="56" name="Net-(U2-Pad20)">
       <node ref="U2" pin="20"/>
     </net>
-    <net code="57" name="+12V">
-      <node ref="C3" pin="1"/>
+    <net code="57" name="Net-(U2-Pad24)">
       <node ref="U2" pin="24"/>
-      <node ref="C5" pin="1"/>
-      <node ref="J6" pin="10"/>
-      <node ref="J6" pin="9"/>
-      <node ref="U1" pin="4"/>
     </net>
     <net code="58" name="Net-(R22-Pad1)">
-      <node ref="R22" pin="1"/>
-      <node ref="SW5" pin="1"/>
       <node ref="U2" pin="22"/>
+      <node ref="SW5" pin="1"/>
+      <node ref="R22" pin="1"/>
     </net>
     <net code="59" name="Net-(R24-Pad2)">
-      <node ref="U1" pin="9"/>
       <node ref="R28" pin="1"/>
+      <node ref="U1" pin="9"/>
       <node ref="R24" pin="2"/>
     </net>
     <net code="60" name="Net-(R23-Pad2)">
@@ -1228,16 +1417,34 @@
       <node ref="R25" pin="2"/>
     </net>
     <net code="62" name="Net-(R26-Pad2)">
-      <node ref="R26" pin="2"/>
       <node ref="R30" pin="1"/>
+      <node ref="R26" pin="2"/>
       <node ref="U1" pin="2"/>
     </net>
-    <net code="63" name="-12V">
-      <node ref="C4" pin="2"/>
-      <node ref="C5" pin="2"/>
+    <net code="63" name="Net-(D12-Pad1)">
       <node ref="J6" pin="1"/>
+      <node ref="D12" pin="1"/>
       <node ref="J6" pin="2"/>
+    </net>
+    <net code="64" name="+12V">
+      <node ref="D11" pin="1"/>
+      <node ref="C8" pin="2"/>
+      <node ref="U4" pin="3"/>
+      <node ref="C5" pin="1"/>
+      <node ref="D13" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="65" name="-12V">
       <node ref="U1" pin="11"/>
+      <node ref="C4" pin="2"/>
+      <node ref="D12" pin="2"/>
+      <node ref="C10" pin="2"/>
+    </net>
+    <net code="66" name="Net-(D13-Pad2)">
+      <node ref="J6" pin="9"/>
+      <node ref="J6" pin="10"/>
+      <node ref="D13" pin="2"/>
     </net>
   </nets>
 </export>

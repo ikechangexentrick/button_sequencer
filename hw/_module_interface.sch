@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 3
+Sheet 2 2
 Title "Button Sequencer"
 Date ""
 Rev "1"
@@ -120,7 +120,7 @@ AR Path="/6242C471" Ref="C?"  Part="1"
 AR Path="/6241987A/6242C471" Ref="C1"  Part="1" 
 F 0 "C1" H 2615 3696 50  0000 L CNN
 F 1 "0.1u" H 2615 3605 50  0000 L CNN
-F 2 "Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal" H 2538 3500 50  0001 C CNN
+F 2 "Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal" H 2538 3500 50  0001 C CNN
 F 3 "~" H 2500 3650 50  0001 C CNN
 	1    2500 3650
 	1    0    0    -1  
@@ -146,7 +146,7 @@ AR Path="/6242C47D" Ref="C?"  Part="1"
 AR Path="/6241987A/6242C47D" Ref="C2"  Part="1" 
 F 0 "C2" H 2615 4346 50  0000 L CNN
 F 1 "0.1u" H 2615 4255 50  0000 L CNN
-F 2 "Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal" H 2538 4150 50  0001 C CNN
+F 2 "Attenuverter:C_Axial_L4.8mm_D2.0mm_P2.54mm_Horizontal" H 2538 4150 50  0001 C CNN
 F 3 "~" H 2500 4300 50  0001 C CNN
 	1    2500 4300
 	1    0    0    -1  
@@ -889,86 +889,125 @@ Wire Wire Line
 	1500 1800 1500 2200
 Wire Wire Line
 	1500 1400 1500 1800
-Text HLabel 4750 2100 0    50   Input ~ 0
+Text HLabel 5550 3300 2    50   Input ~ 0
 sw_enter
-Text HLabel 5250 1900 2    50   Input ~ 0
+Text HLabel 5550 3200 2    50   Input ~ 0
 sw_func_2
-Text HLabel 5250 2100 2    50   Input ~ 0
+Text HLabel 5550 2800 2    50   Input ~ 0
 sw_func_1
-Text HLabel 4750 2000 0    50   Input ~ 0
+Text HLabel 5550 3000 2    50   Input ~ 0
 re_2
-Text HLabel 4750 1900 0    50   Input ~ 0
+Text HLabel 5550 3100 2    50   Input ~ 0
 re_1
-Text HLabel 4750 1300 0    50   Input ~ 0
+Text HLabel 4550 2600 0    50   Input ~ 0
 clock_in
-Text HLabel 5250 1400 2    50   Input ~ 0
+Text HLabel 4550 3000 0    50   Input ~ 0
 select_1
-Text HLabel 5250 1600 2    50   Input ~ 0
+Text HLabel 4550 3200 0    50   Input ~ 0
 select_2
-Text HLabel 5250 1800 2    50   Input ~ 0
+Text HLabel 4550 3400 0    50   Input ~ 0
 select_3
-Text HLabel 5250 2000 2    50   Input ~ 0
+Text HLabel 5550 2600 2    50   Input ~ 0
 select_4
-Text HLabel 5250 1300 2    50   Input ~ 0
+Text HLabel 4550 2700 0    50   Input ~ 0
 seq_start
-Text HLabel 4750 1400 0    50   Input ~ 0
+Text HLabel 4550 2900 0    50   Input ~ 0
 gate_1
-Text HLabel 5250 1500 2    50   Input ~ 0
+Text HLabel 4550 3100 0    50   Input ~ 0
 gate_2
-Text HLabel 4750 1700 0    50   Input ~ 0
+Text HLabel 4550 3300 0    50   Input ~ 0
 gate_3
-Text HLabel 4750 1800 0    50   Input ~ 0
+Text HLabel 5550 2700 2    50   Input ~ 0
 gate_4
 $Comp
 L power:GND #PWR?
 U 1 1 624B68FF
-P 4750 1600
+P 4550 2800
 AR Path="/624B68FF" Ref="#PWR?"  Part="1" 
 AR Path="/6241987A/624B68FF" Ref="#PWR049"  Part="1" 
-F 0 "#PWR049" H 4750 1350 50  0001 C CNN
-F 1 "GND" H 4755 1427 50  0000 C CNN
-F 2 "" H 4750 1600 50  0001 C CNN
-F 3 "" H 4750 1600 50  0001 C CNN
-	1    4750 1600
+F 0 "#PWR049" H 4550 2550 50  0001 C CNN
+F 1 "GND" H 4555 2627 50  0000 C CNN
+F 2 "" H 4550 2800 50  0001 C CNN
+F 3 "" H 4550 2800 50  0001 C CNN
+	1    4550 2800
 	0    1    1    0   
 $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 624B6DF8
-P 4450 1500
+P 4250 2500
 AR Path="/624B6DF8" Ref="#PWR?"  Part="1" 
 AR Path="/6241987A/624B6DF8" Ref="#PWR048"  Part="1" 
-F 0 "#PWR048" H 4450 1350 50  0001 C CNN
-F 1 "+5V" H 4465 1673 50  0000 C CNN
-F 2 "" H 4450 1500 50  0001 C CNN
-F 3 "" H 4450 1500 50  0001 C CNN
-	1    4450 1500
+F 0 "#PWR048" H 4250 2350 50  0001 C CNN
+F 1 "+5V" H 4265 2673 50  0000 C CNN
+F 2 "" H 4250 2500 50  0001 C CNN
+F 3 "" H 4250 2500 50  0001 C CNN
+	1    4250 2500
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Connector_Generic:Conn_02x09_Odd_Even J7
-U 1 1 624B7BF2
-P 4950 1700
-F 0 "J7" H 5000 2317 50  0000 C CNN
-F 1 "Conn_02x09_Odd_Even" H 5000 2226 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x09_P2.54mm_Vertical" H 4950 1700 50  0001 C CNN
-F 3 "~" H 4950 1700 50  0001 C CNN
-	1    4950 1700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	4450 1500 4750 1500
+	4250 2500 4550 2500
 $Comp
 L power:GND #PWR?
 U 1 1 622F81F8
-P 5250 1700
+P 5550 2500
 AR Path="/622F81F8" Ref="#PWR?"  Part="1" 
 AR Path="/6241987A/622F81F8" Ref="#PWR0101"  Part="1" 
-F 0 "#PWR0101" H 5250 1450 50  0001 C CNN
-F 1 "GND" H 5255 1527 50  0000 C CNN
-F 2 "" H 5250 1700 50  0001 C CNN
-F 3 "" H 5250 1700 50  0001 C CNN
-	1    5250 1700
+F 0 "#PWR0101" H 5550 2250 50  0001 C CNN
+F 1 "GND" H 5555 2327 50  0000 C CNN
+F 2 "" H 5550 2500 50  0001 C CNN
+F 3 "" H 5550 2500 50  0001 C CNN
+	1    5550 2500
 	0    -1   -1   0   
 $EndComp
+$Comp
+L Connector:Conn_01x10_Female J7
+U 1 1 63D0A9AE
+P 4750 2900
+F 0 "J7" H 4778 2876 50  0000 L CNN
+F 1 "bus_L" H 4778 2785 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical" H 4750 2900 50  0001 C CNN
+F 3 "~" H 4750 2900 50  0001 C CNN
+	1    4750 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x10_Female J8
+U 1 1 63D12DF0
+P 5350 2900
+F 0 "J8" H 5242 3485 50  0000 C CNN
+F 1 "bus_R" H 5242 3394 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical" H 5350 2900 50  0001 C CNN
+F 3 "~" H 5350 2900 50  0001 C CNN
+	1    5350 2900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 63D16861
+P 5550 3400
+AR Path="/63D16861" Ref="#PWR?"  Part="1" 
+AR Path="/6241987A/63D16861" Ref="#PWR023"  Part="1" 
+F 0 "#PWR023" H 5550 3150 50  0001 C CNN
+F 1 "GND" H 5555 3227 50  0000 C CNN
+F 2 "" H 5550 3400 50  0001 C CNN
+F 3 "" H 5550 3400 50  0001 C CNN
+	1    5550 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 63DA1FCF
+P 5950 2900
+AR Path="/63DA1FCF" Ref="#PWR?"  Part="1" 
+AR Path="/6241987A/63DA1FCF" Ref="#PWR022"  Part="1" 
+F 0 "#PWR022" H 5950 2750 50  0001 C CNN
+F 1 "+5V" H 5965 3073 50  0000 C CNN
+F 2 "" H 5950 2900 50  0001 C CNN
+F 3 "" H 5950 2900 50  0001 C CNN
+	1    5950 2900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5950 2900 5550 2900
 $EndSCHEMATC
